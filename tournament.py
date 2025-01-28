@@ -1,3 +1,7 @@
 class Tournament:
     def __init__(self):
-        pass
+        self.playerList = []
+    
+    def addPlayer(self,player):
+        self.playerList.append(player)
+    

@@ -21,6 +21,11 @@ class Player:
             
             
     def generateSkillModifier(self):
-        skillMod = rnd.uniform(1,10)
+        skillMod = rnd.uniform(0.75,2)
         self.skillModifier = round(skillMod, 2)
+    
+    def generateGameSkill(self,baseUpper):
+        base = rnd.uniform(0,baseUpper)
+        base = (base * self.skillModifier) + self.skillModifier
+        return base
         
