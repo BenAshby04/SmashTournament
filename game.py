@@ -2,9 +2,9 @@ import random as rnd
 from player import Player
 
 class Game:
-    def __init__(self,player1,player2):
-        self.player1 = player1
-        self.player2 = player2
+    def __init__(self,playerGame):
+        self.player1 = playerGame[0]
+        self.player2 = playerGame[1]
         self.winner = ""
     
     def simGame(self):
@@ -13,9 +13,11 @@ class Game:
         player2Skill = self.player2.generateGameSkill(baseProb)
         
         if player1Skill > player2Skill:
-            self.winner = "player1"
+            self.winner = self.player1.playerName
+            return self.player1
         elif player1Skill < player2Skill:
-            self.winner = "player2"
+            self.winner = self.player2.playerName
+            return self.player2
         else:
             self.simGame()
             

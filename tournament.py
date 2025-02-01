@@ -1,4 +1,5 @@
 from player import Player
+from game import Game
 import math
 
 class Tournament:
@@ -9,7 +10,7 @@ class Tournament:
         self.playerList.append(player)
     
     def generateBrackets(self):
-        bracket = []
+        self.bracket = []
         
         playerListLength = len(self.playerList)
         halfOfPlayerLength = playerListLength / 2 
@@ -32,8 +33,13 @@ class Tournament:
         # Populate bracket
         for i in range(halfOfPlayerLength):
             game = [sortedPlayerList[i], sortedPlayerList[-(i+1)]]
-            bracket.append(game)
+            self.bracket.append(game)
         
-        print(bracket)
-
-        pass
+        print(self.bracket)
+    
+    def playBracket(self):
+        winners = []
+        for match in self.bracket:
+            game = Game(match)
+            winners.append(game.simGame())
+        return winners()
