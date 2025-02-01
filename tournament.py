@@ -13,9 +13,8 @@ class Tournament:
         self.bracket = []
         
         playerListLength = len(self.playerList)
-        halfOfPlayerLength = playerListLength / 2 
+        halfOfPlayerLength = int(playerListLength / 2) 
 
-        print(math.floor(halfOfPlayerLength))
         if int(math.floor(halfOfPlayerLength)) % 2 ==0:
             self.playerList.remove(self.playerList[-1])
             playerListLength = len(self.playerList)
@@ -25,9 +24,6 @@ class Tournament:
             playerListLength = len(self.playerList)
             halfOfPlayerLength = int(playerListLength /2)
         
-
-        print(halfOfPlayerLength)
-        
         sortedPlayerList = sorted(self.playerList,key=lambda x: x.skillModifier, reverse=True)
 
         # Populate bracket
@@ -35,11 +31,10 @@ class Tournament:
             game = [sortedPlayerList[i], sortedPlayerList[-(i+1)]]
             self.bracket.append(game)
         
-        print(self.bracket)
     
-    def playBracket(self):
+    def playBracket(self, bracket):
         winners = []
         for match in self.bracket:
             game = Game(match)
             winners.append(game.simGame())
-        return winners()
+        return winners
