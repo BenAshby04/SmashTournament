@@ -9,6 +9,7 @@ class Player:
         self.generateName()
         self.generateSkillModifier()
         
+    # Picks a random name from the playerDictionary and adds a random number on the end
     def generateName(self):
         with open("playerDictionary.txt", "r") as file:
             nameList = []
